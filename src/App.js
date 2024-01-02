@@ -21,8 +21,8 @@ function App() {
         else setTweetComment(e.target.value);
     };
 
-    const handleTweet = () => {
-        axios.put('http://127.0.0.1:8000/analysis/',{
+    const handleTweet = async () =>  {
+         await axios.put('https:/tweet-sentiment-analyser.onrender.com/analysis/',{
             "text":`${tweetComment}`
         }).then(function (response) {
             setBoxText(response.data);
