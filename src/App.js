@@ -4,7 +4,7 @@ import Modal from "./components/Modal";
 import Tweet from "./components/Tweet";
 import React, { useState } from "react";
 import axios from 'axios';
-
+axios.defaults.baseURL = process.env.APP_URL
 function App() {
     const [open, setOpen] = useState(true);
     const [tweeted, setTweeted] = useState(false);
@@ -22,7 +22,7 @@ function App() {
     };
 
     const handleTweet = async () =>  {
-         await axios.put('https:/tweet-sentiment-analyser.onrender.com/analysis/',{
+         await axios.put(`${base_URL}`+'/analysis/',{
             "text":`${tweetComment}`
         }).then(function (response) {
             setBoxText(response.data);
