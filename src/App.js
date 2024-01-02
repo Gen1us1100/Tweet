@@ -3,6 +3,7 @@ import FinalTweet from "./components/FinalTweet";
 import Modal from "./components/Modal";
 import Tweet from "./components/Tweet";
 import React, { useState } from "react";
+import axios from 'axios';
 
 function App() {
     const [open, setOpen] = useState(true);
@@ -21,12 +22,19 @@ function App() {
     };
 
     const handleTweet = () => {
+        axios.put('http://127.0.0.1:8000/analysis/',{
+            "text":`${tweetComment}`
+        }).then(function (response) {
+            setBoxText(response.data);
+          })
         setTweeted(true);
     };
 
     return (
+        <><h1 style={{background: open ? "#fff" : "#1da1f2",textAlign:"center"}}>Tweet Sentiment Analyser</h1>
         <div className="App" style={{ background: open ? "#fff" : "#1da1f2" }}>
             <Modal isOpen={open}>
+            
                 <h1>Enter your username</h1>
                 <input
                     type="text"
@@ -39,7 +47,9 @@ function App() {
             </Modal>
 
             {!open && !tweeted && (
+                
                 <Tweet className="tweet-container">
+                    
                     <textarea
                         value={tweetComment}
                         placeholder="What's on your mind?"
@@ -63,7 +73,10 @@ function App() {
                     <Box content={boxText} />
                 </>
             )}
+            
         </div>
+        <footer style={{background: open ? "#fff" : "#1da1f2", textAlign:"center"}}>Model is still in progress expect it be accurate only ~80% of times<br/>Made with ❤️ by<br/>Frontend-Slogllykop,Backend-Gen1us<br/>version 0.1.0</footer>
+        </>
     );
 }
 
