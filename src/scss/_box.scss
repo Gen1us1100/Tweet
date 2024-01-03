@@ -4,4 +4,12 @@
     background: white;
     padding: 2rem 1rem;
     text-align: center;
+
+    @include px525 {
+        width: 325px;
+    }
+
+    @include px350 {
+        width: 275px;
+    }
 }

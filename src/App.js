@@ -2,17 +2,19 @@ import Box from "./components/Box";
 import FinalTweet from "./components/FinalTweet";
 import Modal from "./components/Modal";
 import Tweet from "./components/Tweet";
+import Footer from "./components/Footer";
 import React, { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
+import Back from "./components/Back";
 
 function App() {
     const [open, setOpen] = useState(true);
     const [tweeted, setTweeted] = useState(false);
     const [username, setUsername] = useState("");
     const [tweetComment, setTweetComment] = useState("");
+    const [boxText, setBoxText] = useState("Couldn't get a response 😥");
 
-    // change the setter function according to you
-    const [boxText, setBoxText] = useState("Text that can change dynamically");
+    const version = "0.1.1";
 
     const handleClose = () => setOpen(false);
 
@@ -30,11 +32,20 @@ function App() {
         setTweeted(true);
     };
 
+    const goBack = () => {
+        setTweeted(false);
+        setTweetComment("");
+        setOpen(true);
+        setUsername("");
+        setBoxText("Couldn't get a response 😥");
+    };
+
     return (
-        <><h1 style={{background: open ? "#fff" : "#1da1f2",textAlign:"center"}}>Tweet Sentiment Analyser</h1>
         <div className="App" style={{ background: open ? "#fff" : "#1da1f2" }}>
+            <h1 style={{ color: open ? "black" : "white" }}>
+                Tweet Sentiment Analyser
+            </h1>
             <Modal isOpen={open}>
-            
                 <h1>Enter your username</h1>
                 <input
                     type="text"
@@ -47,9 +58,7 @@ function App() {
             </Modal>
 
             {!open && !tweeted && (
-                
                 <Tweet className="tweet-container">
-                    
                     <textarea
                         value={tweetComment}
                         placeholder="What's on your mind?"
@@ -71,12 +80,12 @@ function App() {
                         tweetComment={tweetComment}
                     />
                     <Box content={boxText} />
+                    <Back handleClick={goBack} />
                 </>
             )}
-            
+
+            <Footer version={version} open={open} />
         </div>
-        <footer style={{background: open ? "#fff" : "#1da1f2", textAlign:"center"}}>Model is still in progress expect it be accurate only ~80% of times<br/>Made with ❤️ by<br/>Frontend-Slogllykop,Backend-Gen1us<br/>version 0.1.0</footer>
-        </>
     );
 }
 
