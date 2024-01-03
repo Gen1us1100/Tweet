@@ -1,17 +1,27 @@
+@import "mixins";
+
+$color: #1da1f2;
+
 .modal {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid;
-    position: absolute;
-    margin: auto;
-    inset: 20%;
-    background: rgb(0 0 0 / 0.25);
+    padding: 4rem;
+    border: 2px solid $color;
+    background: lighten($color: $color, $amount: 35%);
     border-radius: 15px;
+
+    @include px350 {
+        padding: 4rem 2rem;
+    }
 
     & > h1 {
         font-size: 2rem;
+
+        @include px350 {
+            font-size: 1.5rem;
+        }
     }
 
     & > input {
@@ -20,15 +30,24 @@
         margin-block: 1rem;
         border-radius: 10px;
         border: 0;
+
+        @include px350 {
+            width: 200px;
+        }
     }
 
     & > button {
         width: 250px;
         padding: 0.5rem 1rem;
         border: none;
-        background: #000;
+        background: $color;
         color: #fff;
         cursor: pointer;
         border-radius: 10px;
+
+        @include px350 {
+            width: 200px;
+            font-size: 1.1rem;
+        }
     }
 }

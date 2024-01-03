@@ -7,6 +7,15 @@ $color: #1da1f2;
     height: 300px;
     border-radius: 15px;
 
+    @include px525 {
+        width: 325px;
+    }
+
+    @include px350 {
+        width: 275px;
+        height: 250px;
+    }
+
     &.final {
         height: auto;
     }
