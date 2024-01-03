@@ -24,11 +24,16 @@ function App() {
     };
 
     const handleTweet = async () =>  {
-         await axios.put('http://localhost:8000/analysis/',{
+        try{
+         await axios.put('https://tweet-sentiment-analyser.onrender.com/analysis/',{
             "text":`${tweetComment}`
         }).then(function (response) {
             setBoxText(response.data);
           })
+        }
+        catch(error){
+            setBoxText("Couldn't get a response 😥");
+        }
         setTweeted(true);
     };
 
