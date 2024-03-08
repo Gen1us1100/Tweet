@@ -6,7 +6,8 @@ from starlette.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 import time
 import logging
 import chromedriver_binary
@@ -68,9 +69,9 @@ def read_root():
 def getTweetTextandUsername(target_url:str):
     # print("URL IS THIS :"+target_url)
     # print("URL IS THIS :",str(type(target_url)))
-    chrome_options = Options()
-    chrome_options.add_argument('--headless')
-    driver=webdriver.Chrome( options=chrome_options)
+    options = Options()
+    options.add_argument('--headless')
+    driver=webdriver.Firefox( options=options)
     driver.get(target_url)
     time.sleep(5)
     resp = driver.page_source
