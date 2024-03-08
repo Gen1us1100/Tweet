@@ -8,6 +8,11 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
+import logging
+log_level = logging.DEBUG
+logging.basicConfig(level=log_level)
+webdriver_log = logging.getLogger('selenium.webdriver.remote.remote_connection')
+webdriver_log.setLevel(log_level)
 
 app = FastAPI()
 class SPAStaticFiles(StaticFiles):
