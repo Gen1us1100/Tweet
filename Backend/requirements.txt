@@ -3,4 +3,4 @@ fastapi
 uvicorn[standard]
 beautifulsoup4
 selenium
-chromedriver-py
+chromedriver-py==122.0.6261.112

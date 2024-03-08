@@ -47,10 +47,11 @@ def predict_analysis(tweet:Tweet):
 @app.put("/twitter/")
 def tweet_analysis(url:Url):
     myURL = {url.URL}
-    myTweet = getTweetText(next(iter(myURL)))
+    myTweet,UserName = getTweetTextandUsername(next(iter(myURL)))
     Tweet_vector =  myVectorizer.transform({myTweet})
     prediction = model.predict(Tweet_vector)
-    return('looks positive to me! 😃' if prediction else 'looks negative to me!😕')
+    return{'response':('looks positive to me! 😃' if prediction else 'looks negative to me!😕')
+    ,'tweet_text':f'{myTweet}','username':f'{UserName}'}
  
 
 app.mount("/", StaticFiles(directory="staticfiles",html=True), name="static")
@@ -58,7 +59,7 @@ app.mount("/", StaticFiles(directory="staticfiles",html=True), name="static")
 def read_root():
     return {"Hello":"World"}
 
-def getTweetText(target_url:str):
+def getTweetTextandUsername(target_url:str):
     # print("URL IS THIS :"+target_url)
     # print("URL IS THIS :",str(type(target_url)))
     chrome_options = Options()
@@ -69,5 +70,6 @@ def getTweetText(target_url:str):
     resp = driver.page_source
     soup=BeautifulSoup(resp,'html.parser')
     TweetText = soup.find("div",{"class":"css-1rynq56 r-bcqeeo r-qvutc0 r-37j5jr r-1inkyih r-16dba41 r-bnwqim r-135wba7"}).text
+    UserName = soup.find("div",{"class":"css-1rynq56 r-dnmrzs r-1udh08x r-3s2u2q r-bcqeeo r-qvutc0 r-37j5jr r-a023e6 r-rjixqe r-16dba41 r-18u37iz r-1wvb978"}).text
     driver.close()
-    return TweetText
+    return TweetText,UserName
