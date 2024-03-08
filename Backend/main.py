@@ -9,6 +9,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
 import logging
+import chromedriver_binary
 log_level = logging.DEBUG
 logging.basicConfig(level=log_level)
 webdriver_log = logging.getLogger('selenium.webdriver.remote.remote_connection')
