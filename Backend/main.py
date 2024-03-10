@@ -238,7 +238,6 @@ def read_root():
     return {"Hello":"World"}
 
 def get_tweet_text_and_username(target_url:str):
-def get_tweet_text_and_username(target_url:str):
     options = Options()
     options.add_argument('--headless')
     
