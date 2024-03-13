@@ -5,4 +5,5 @@ beautifulsoup4
 selenium
 # chromedriver-py==122.0.6261.112
 # chromedriver-binary==122.0.6261.111.0
-selenium_firefox
+# selenium_firefox
+# geckodriver-autoinstaller
