@@ -1,0 +1,10 @@
+@import "variables";
+
+.sentimentHolder {
+    width: $boxWidth;
+    border-radius: 1rem;
+    background: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-block: 1rem;
+}

@@ -1,0 +1,42 @@
+@import "variables";
+
+.box {
+    display: flex;
+    width: $boxWidth;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem;
+    border: 2px solid $tweetColor;
+    background: $tweetColorLight;
+    border-radius: 1rem;
+    margin-block: 2rem;
+    gap: 0.25rem;
+}
+
+.boxInput {
+    padding: 0.75rem 1rem;
+    margin-block: 1rem;
+    border-radius: 0.625rem;
+    border: 0;
+    outline: none;
+}
+
+.boxBtn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: $tweetColor;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0.625rem;
+}
+
+.boxLink {
+    text-decoration: none;
+    color: #000;
+    margin-top: 0.5rem;
+
+    &:hover {
+        color: darken($tweetColor, 20%);
+    }
+}
