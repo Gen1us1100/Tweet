@@ -17,6 +17,7 @@ const Box = ({
         type === "username" ? username : link
     );
     const [warnMessage, setWarnMessage] = React.useState(false);
+    const [urlMessage, setUrlMessage] = React.useState(false);
 
     return (
         <div className="box">
@@ -29,6 +30,8 @@ const Box = ({
                     type === "username"
                         ? setUsername(e.target.value)
                         : setLink(e.target.value);
+
+                    setUrlMessage(false);
                     setWarnMessage(false);
                 }}
                 name="boxInput"
@@ -40,11 +43,25 @@ const Box = ({
                     Input field cannot be empty
                 </span>
             )}
+            {urlMessage && (
+                <span className="warn-message">Enter a valid URL</span>
+            )}
             <button
                 className="boxBtn"
                 onClick={() => {
-                    if (!inputValue) setWarnMessage(true);
-                    else handleButtonClick();
+                    if (!inputValue) {
+                        setWarnMessage(true);
+                        return;
+                    } else if (type === "username") {
+                        handleButtonClick();
+                        return;
+                    }
+                    if (
+                        type === "url" &&
+                        !link.includes("https://twitter.com/")
+                    ) {
+                        setUrlMessage(true);
+                    } else handleButtonClick();
                 }}
             >
                 {btnText}
