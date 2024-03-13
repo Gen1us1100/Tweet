@@ -243,7 +243,7 @@ def get_tweet_text_and_username(target_url:str):
     
     # Set timeout for WebDriver
     driver = webdriver.Firefox(options=options)
-    driver.set_page_load_timeout(30)  # Adjust timeout as needed
+    driver.set_page_load_timeout(10)  # Adjust timeout as needed
 
     try:
         driver.get(target_url)
