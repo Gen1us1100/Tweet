@@ -19,7 +19,7 @@ const TwitterPage = () => {
     const currentColor = useTheme(isColor);
 
     const handdleReset = () => {
-        isColor(false);
+        setIsColorsColor(false);
         setUrl("");
         setHasSubmited(false);
         setUsername("");
