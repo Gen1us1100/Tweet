@@ -30,7 +30,9 @@ const TweetOptions = () => {
 
 const Tweet = React.memo(({ username, comment }) => (
     <div className="tweet">
-        <h3 className="tweetUsername">@{username}</h3>
+        <h3 className="tweetUsername">
+            {username.includes("@") ? username : "@" + username}
+        </h3>
         <p className="tweetComment">{comment}</p>
         <TweetOptions />
     </div>

@@ -21,7 +21,8 @@ const Home = () => {
 
     const handleTweet = async () => {
         const endpoint =
-            "https://tweet-sentiment-analyser.onrender.com/analysis/";
+            // "https://tweet-sentiment-analyser.onrender.com/analysis/";
+            "http://localhost:8000/analysis/";
 
         try {
             const response = await axios.put(endpoint, {

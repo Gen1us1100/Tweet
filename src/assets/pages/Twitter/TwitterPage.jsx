@@ -19,7 +19,7 @@ const TwitterPage = () => {
     const currentColor = useTheme(isColor);
 
     const handdleReset = () => {
-        setIsColorsColor(false);
+        setIsColor(false);
         setUrl("");
         setHasSubmited(false);
         setUsername("");
@@ -28,7 +28,7 @@ const TwitterPage = () => {
     };
 
     const handleSubmit = async () => {
-        const endpoint = "http://localhost:8000/twitter";
+        const endpoint = "http://localhost:8000/twitter/";
         try {
             const response = await axios.put(endpoint, {
                 URL: url,
