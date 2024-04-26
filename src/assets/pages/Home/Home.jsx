@@ -18,7 +18,6 @@ const Home = () => {
     const [boxText, setBoxText] = React.useState("Couldn't get a response 😥");
 
     const currentColor = useTheme(isColor);
-    console.log("Theme:", currentColor);
 
     const handleTweet = async () => {
         const endpoint =
