@@ -241,15 +241,9 @@ def getTweetTextandUsername(target_url:str):
 #     options = Options()
 #     options.add_argument('--headless')
     
-<<<<<<< HEAD
-    # Set timeout for WebDriver
-    driver = webdriver.Firefox(options=options)
-    driver.set_page_load_timeout(10)  # Adjust timeout as needed
-=======
 #     # Set timeout for WebDriver
 #     driver = webdriver.Firefox(options=options)
 #     driver.set_page_load_timeout(10)  # Adjust timeout as needed
->>>>>>> 705c84dea5aebd08b10f2b3aa04cf8ae2f978fec
 
 #     try:
 #         driver.get(target_url)
